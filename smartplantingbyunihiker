@@ -1,0 +1,20 @@
+#  -*- coding: UTF-8 -*-
+
+# MindPlus
+# Python
+import time
+from unihiker import GUI
+from pinpong.board import Pin
+from pinpong.board import Board
+from pinpong.board import Board,Pin
+
+
+Board().begin()
+u_gui=GUI()
+pin21 = Pin(21, Pin.ANALOG)
+
+while True:
+    u_gui.clear()
+    moisture = pin21.read_analog()
+    u_gui.draw_text(text=(str("Water Moisture:  ") + str((str(moisture)))),x=25,y=135,font_size=14, color="#0000FF")
+    time.sleep(3)
