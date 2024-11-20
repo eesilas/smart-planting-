@@ -16,5 +16,15 @@ pin21 = Pin(21, Pin.ANALOG)
 while True:
     u_gui.clear()
     moisture = pin21.read_analog()
-    u_gui.draw_text(text=(str("Water Moisture:  ") + str((str(moisture)))),x=25,y=135,font_size=14, color="#0000FF")
+    u_gui.draw_text(text=(str("Water Moisture:  ") + str((str(moisture)))),x=28,y=55,font_size=14, color="#0000FF")
+    if (moisture < 100):
+        u_gui.draw_emoji(emoji="Sweat",x=10,y=85,duration=0.2)
+    elif ((moisture < 500) and (moisture >= 100)):
+        u_gui.draw_emoji(emoji="Nerve",x=10,y=85,duration=0.2)
+    elif ((moisture < 1023) and (moisture >= 500)):
+        u_gui.draw_emoji(emoji="Shock",x=10,y=85,duration=0.2)
+    elif ((moisture < 2047) and (moisture >= 1023)):
+        u_gui.draw_emoji(emoji="Angry",x=10,y=85,duration=0.2)
+    else:
+        u_gui.draw_emoji(emoji="Think",x=10,y=85,duration=0.2)
     time.sleep(3)
